@@ -1,29 +1,67 @@
-<<<<<<< HEAD
-class Nodo:
-  def __init__(self, dato):
-    self.dato = dato
-    self.enlaces = []
+from Lista import Nodo, Lista
+from Pila import NodoPila, PilaLista
+from Cola import NodoCola, ColaLista
+from Bicola import Bicola
 
-  def agregarEnlace(self, datoN):
-    self.enlaces.append(Nodo(datoN))
+def ejemploLista():
+  lista = Lista()
 
-  def agregarEnlace(self, datoN, peso):
-    self.enlaces.append(Enlace(Nodo(datoN), peso))
+  lista.insertarFinal(2)
+  lista.insertarFinal(3)
+  lista.insertarFinal(4)
+  lista.insertarFinal(5)
+  lista.insertarComienzo(6)
 
-class Enlace:
+  print("Busqueda: " + str(lista.buscarLista(4).dato))
+
+  lista.visualizar()
+
+  lista.eliminar(4)
+  print("4 Eliminado")
+  lista.visualizar()
+
+def ejemploPila():
+  lista = PilaLista()
+
+  lista.insertar(2)
+  lista.insertar(4)
+  lista.insertar(6)
+
+  print("Busqueda " + str(lista.buscarLista(4).elemento))
+  lista.visualizar()
+  print(lista.quitar())
+  print(lista.quitar())
+  print(lista.quitar())
+  lista.visualizar()
+
+def ejemploCola():
+  lista = ColaLista()
+
+  lista.insertar(1)
+  lista.insertar(2)
+  lista.insertar(3)
+  lista.insertar(4)
   
-  def __init__(self, nodo, peso):
-    self.nodo = nodo
-    self.peso = peso
+  print(lista.quitar())
+  print(lista.quitar())
+  print(lista.quitar())
+  print(lista.quitar())
 
+def ejemploBiCola():
+  lista = Bicola()
 
-n = Nodo(2)
+  lista.poner_final(1)
+  lista.poner_final(2)
+  lista.poner_frente(3)
+  lista.poner_frente(4)
+  
+  print("-----")
+  lista.visualizar()
+  print("-----")
+  
+  print(lista.quitar_final())
+  print(lista.quitar_final())
+  print(lista.quitar_frente())
+  print(lista.quitar_frente())
 
-n.agregarEnlace(3,3)
-
-n.agregarEnlace(4,1)
-
-print("Enlaces de " + str(n.dato) + ":\n")
-
-for x in range(len(n.enlaces)):
-  print("Enlace #" + str(x) + ": "+ str(n.enlaces[x].nodo.dato))
+ejemploBiCola()
